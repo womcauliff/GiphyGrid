@@ -1,6 +1,6 @@
 
 // Initial array of gif queries
-var topics = ['tiger', 'whale'];
+var topics = ['tiger', 'whale', 'frog', 'penguin'];
 
 /**
  * - [x] Use an array to store your animals,
@@ -42,6 +42,9 @@ function getGiphs() {
 	var offset = 0;
 	var q = $(this).attr('data-query');
 
+	//replace white space with '+' characters
+	q = q.replace(/ /g, '+');
+
 	var request = apiEndpoint + "?" 
 					+ "q=" + q 
 					+ "&api_key=" + api_key
@@ -81,6 +84,12 @@ function responseHandler (response) {
 		}
 }
 
+/**
+ * giftoHTML()
+ *
+ * Parses a GIPHY gif Object, constructing an HTML element
+ * with data attribute values necessary for animateGif()
+ */
 function giftoHTML(gifObject) {
 	console.log("giftoHTML()");
 
@@ -101,11 +110,11 @@ function giftoHTML(gifObject) {
 	var gifResult = $("<img>")
 						.addClass("gifresult img-responsive")
 						//add still as initial source
-						.attr("src", gifObject.images.original_still.url)
+						.attr("src", gifObject.images.fixed_height_still.url)
 						//add gif-url as attribute
-						.attr("data-animate", gifObject.images.original.url)
+						.attr("data-animate", gifObject.images.fixed_height.url)
 						//add still-url as attribute
-						.attr("data-still", gifObject.images.original_still.url)
+						.attr("data-still", gifObject.images.fixed_height_still.url)
 						//add still as initial state
 						.attr("data-state", "still");
 	var outerDiv = 
@@ -147,3 +156,23 @@ function renderButtons(){
 		$("#buttonsView").append(b);
 	}
 }
+
+$('#addAnimal').on('click', function(){
+	console.log("submitted");
+	// Retrieve the input from the textbox
+	var animal = $('#animal-input').val().trim();
+
+	if(animal !== ''){
+		// Add animal from the textbox to global array
+		topics.push(animal);
+		
+		//Render buttons, with user's addition included
+		renderButtons();
+	}
+
+	//Reset input text field
+	$("#animal-input").val('');
+
+	//Prevent page refresh
+	return false;
+})
