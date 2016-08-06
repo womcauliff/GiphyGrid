@@ -6,19 +6,31 @@ var topics = ['tiger', 'whale'];
  * - [x] Use an array to store your animals,
  * - [x] make the buttons on the page using a function (for loop may be required),
  * - [x] query link to the API should be saved to a variable,
- * - [ ] you should use the data attribute at least once,
- * - [ ] gifs should be added to the webpage correctly,
+ * - [x] you should use the data attribute at least once,
+ * - [x] gifs should be added to the webpage correctly,
  * - [x] the jQuery cdn (or local jQuery file) must be used
  * - [x] the project must be deployed to Heroku.
  */
 
 $(document).ready(function(){
 	console.log("ready");
-
 	renderButtons();
 });
-$(document).on('click', '.btn-query', getGiphs);
 
+/**
+ * These click event listeners use jQuery to select the document,
+ * so that DOM elements added dynamically are included.
+ */
+$(document).on('click', '.btn-query', getGiphs);
+$(document).on('click', '.gifresult', animateGif);
+
+
+/**
+ * getGiphs()
+ *
+ * Makes a call to the GIPHY API 1.0,
+ * using the query stored in the UI button.
+ */
 function getGiphs() {
 	console.log("getGiphs()");
 	/**
@@ -39,17 +51,31 @@ function getGiphs() {
 		url: request,
 		method: "GET"
 	}).done(function(response) {
+		//
 		responseHandler(response);
 	});
 }
 
+/**
+ * responseHandler()
+ *
+ * Parses the JSON response retrieved
+ * via the GIPHY API
+ */
 function responseHandler (response) {
 		console.log(response);
 
+		// Return if bad response
 		if (response.meta.status !== 200) {
 			console.log(response.meta);
 			return;
 		}
+		
+		$("#gif-row").empty(); //Remove any results from prior API calls
+
+		/* Loop through GIPHY JSON response,
+		 * passing GIPHY result objects to giftoHTML()
+		 */
 		for (var i = 0; i < response.data.length; i++) {
 			giftoHTML(response.data[i]);
 		}
@@ -72,18 +98,40 @@ function giftoHTML(gifObject) {
 		);
 	}
 
-
-	var outerDiv = $("<div>")
-					.addClass("col-md-3 gifresult")
-					.append(
-						ratingDiv
-					)
-					.append(
-						$("<img>")
-						.addClass("img-responsive")
+	var gifResult = $("<img>")
+						.addClass("gifresult img-responsive")
+						//add still as initial source
 						.attr("src", gifObject.images.original_still.url)
-					);
+						//add gif-url as attribute
+						.attr("data-animate", gifObject.images.original.url)
+						//add still-url as attribute
+						.attr("data-still", gifObject.images.original_still.url)
+						//add still as initial state
+						.attr("data-state", "still");
+	var outerDiv = 
+		$("<div>")
+			.addClass("col-md-3")
+			.append( ratingDiv )
+			.append( gifResult );
 	$("#gif-row").append(outerDiv);
+}
+
+/**
+ * animateGif()
+ *
+ * Checks an img element for the value in the state data-attribute,
+ * and swaps the src with the url stored in the corresponding
+ * attribute.
+ */
+function animateGif() {
+	var state = $(this).attr('data-state');
+	if ( state == 'still'){
+        $(this).attr('src', $(this).data('animate'));
+        $(this).attr('data-state', 'animate');
+    }else{
+        $(this).attr('src', $(this).data('still'));
+        $(this).attr('data-state', 'still');
+    }
 }
 
 function renderButtons(){
