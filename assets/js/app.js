@@ -1,6 +1,6 @@
 
 // Initial array of gif queries
-var topics = ['tiger', 'whale', 'frog', 'penguin'];
+var topics = ['tiger', 'whale', 'frog', 'penguin', 'chicken', 'turtle', 'hedgehog', 'hermit crab'];
 
 /**
  * - [x] Use an array to store your animals,
