@@ -27,3 +27,244 @@ header a {
 .btn {
 	margin-right: 12px;
 }
+
+/* Quick Margin Classes */
+
+.maf {
+    margin: 0;
+}
+
+.maxs {
+    margin: 4.5px;
+}
+
+.mas {
+    margin: 9px;
+}
+
+.mam {
+    margin: 18px;
+}
+
+.mal {
+    margin: 36px;
+}
+
+.maxl {
+    margin: 54px;
+}
+
+.mbf {
+    margin-bottom: 0;
+}
+
+.mbxs {
+    margin-bottom: 4.5px;
+}
+
+.mbs {
+    margin-bottom: 9px;
+}
+
+.mbm {
+    margin-bottom: 18px;
+}
+
+.mbl {
+    margin-bottom: 36px;
+}
+
+.mbxl {
+    margin-bottom: 54px;
+}
+
+.mhc {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mlf {
+    margin-left: 0;
+}
+
+.mlxs {
+    margin-left: 4.5px;
+}
+
+.mls {
+    margin-left: 9px;
+}
+
+.mlm {
+    margin-left: 18px;
+}
+
+.mll {
+    margin-left: 36px;
+}
+
+.mlxl {
+    margin-left: 54px;
+}
+
+.mrf {
+    margin-right: 0;
+}
+
+.mrxs {
+    margin-right: 4.5px;
+}
+
+.mrs {
+    margin-right: 9px;
+}
+
+.mrm {
+    margin-right: 18px;
+}
+
+.mrl {
+    margin-right: 36px;
+}
+
+.mrxl {
+    margin-right: 54px;
+}
+
+.mtf {
+    margin-top: 0;
+}
+
+.mtxs {
+    margin-top: 4.5px;
+}
+
+.mts {
+    margin-top: 9px;
+}
+
+.mtm {
+    margin-top: 18px;
+}
+
+.mtl {
+    margin-top: 36px;
+}
+
+.mtxl {
+    margin-top: 54px;
+}
+
+/* Quick Padding Classes */
+
+.paf {
+    padding: 0;
+}
+
+.paxs {
+    padding: 4.5px;
+}
+
+.pas {
+    padding: 9px;
+}
+
+.pam {
+    padding: 18px;
+}
+
+.pal {
+    padding: 36px;
+}
+
+.paxl {
+    padding: 54px;
+}
+
+.pbf {
+    padding-bottom: 0;
+}
+
+.pbxs {
+    padding-bottom: 4.5px;
+}
+
+.pbs {
+    padding-bottom: 9px;
+}
+
+.pbm {
+    padding-bottom: 18px;
+}
+
+.pbl {
+    padding-bottom: 36px;
+}
+
+.pbxl {
+    padding-bottom: 54px;
+}
+
+.plf {
+    padding-left: 0;
+}
+
+.plxs {
+    padding-left: 4.5px;
+}
+
+.pls {
+    padding-left: 9px;
+}
+
+.plm {
+    padding-left: 18px;
+}
+
+.pll {
+    padding-left: 36px;
+}
+
+.prf {
+    padding-right: 0;
+}
+
+.prxs {
+    padding-right: 4.5px;
+}
+
+.prs {
+    padding-right: 9px;
+}
+
+.prm {
+    padding-right: 18px;
+}
+
+.prl {
+    padding-right: 36px;
+}
+
+.ptf {
+    padding-top: 0;
+}
+
+.ptxs {
+    padding-top: 4.5px;
+}
+
+.pts {
+    padding-top: 9px;
+}
+
+.ptm {
+    padding-top: 18px;
+}
+
+.ptl {
+    padding-top: 36px;
+}
+
+.ptxl {
+    padding-top: 54px;
+}
